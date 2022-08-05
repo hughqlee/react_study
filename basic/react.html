@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Counter</title>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<script>
+    let i = 0
+    const root = document.getElementById('root');
+    const num = React.createElement('span', null, i);
+    const btn = React.createElement(
+        'button', 
+        {onClick: () => {
+            i += 1
+            num.props.children = i
+            console.log(num.props.children, i)
+        }}, 
+        'add'
+        );
+    const box = React.createElement('div', null, [num, btn])
+    ReactDOM.render(box, root);
+</script>
+</html>
