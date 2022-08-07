@@ -10,25 +10,19 @@
 <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
 <script src="https://unpkg.com/@babel/standalone@7.18.11/babel.min.js"></script>
 <script type="text/babel">
-    let i = 0
     const root = document.getElementById('root');
-    const Num = () => (
-        <span>{i}</span>
-    );
-    const Btn = () => (
-        <button onClick={
-            () => {
-                i += 1
-                ReactDOM.render(<Box />, root)
-            }
-        }>add</button>
-    );
-    const Box = () => (
-        <div>
-            <Num />
-            <Btn />
-        </div>
-    );
-    ReactDOM.render(<Box />, root);
+    function App() {
+        const [num, setNum] = React.useState(0);
+        const onClickAdd = () => {
+            setNum((curr) => curr + 1);
+        };
+        return (
+            <div>
+                <span>{num}</span>
+                <button onClick={onClickAdd}>add</button>
+            </div>
+        )
+    }
+    ReactDOM.render(<App />, root);
 </script>
 </html>
